@@ -3,10 +3,12 @@
 This is my final project for PIC 10C; it's my learning how to use Jupyter Notebook and Python to do data analysis.
 I started by learning how to use Jupyter with some tutorials, then went on to analyze a dataset that I found interesting.
 
-For the days where I didn't push anything to this repo, I thought I should log what I did:
+Here's a general log of what I did:
 
 **May 17:** To download Jupyter Notebook, I first had to download Miniconda. I ran into some issues with local repositories
 and creating my folder, but eventually got both downloaded and working.
+
+**May 18:** Initial Commit & Hello, World in Jupyter Notebook
 
 **May 19:** Reviewed some Markdown and started this README ! I also planned how I would be breaking up the tutorials I was going to follow.
 They can be found here:
