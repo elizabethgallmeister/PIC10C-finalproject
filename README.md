@@ -16,3 +16,7 @@ They can be found here:
 2. [Aggregating Data](http://wavedatalab.github.io/datawithpython/aggregate.html)
 3. [Visualizing Data](http://wavedatalab.github.io/datawithpython/visualize.html)
 4. [Time Series](http://wavedatalab.github.io/datawithpython/timeseries.html)
+
+**May 20:** First tutorial: Munging Data
+
+**May 24:** Second tutorial: Aggregating Data
