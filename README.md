@@ -10,13 +10,17 @@ and creating my folder, but eventually got both downloaded and working.
 
 **May 18:** Initial Commit & Hello, World in Jupyter Notebook
 
-**May 19:** Reviewed some Markdown and started this README ! I also planned how I would be breaking up the tutorials I was going to follow.
+**May 19:** Reviewed some Markdown and started this README! I also planned how I would be breaking up the tutorials I was going to follow.
 They can be found here:
 1. [Munging Data](http://wavedatalab.github.io/datawithpython/munge.html)
 2. [Aggregating Data](http://wavedatalab.github.io/datawithpython/aggregate.html)
 3. [Visualizing Data](http://wavedatalab.github.io/datawithpython/visualize.html)
 4. [Time Series](http://wavedatalab.github.io/datawithpython/timeseries.html)
 
+As I went through the tutorials, I logged my main takeaways in the notebook itself, as well as noted topics I wanted to further investigate.
+
 **May 20:** First tutorial: Munging Data
 
-**May 24:** Second tutorial: Aggregating Data
+**May 23:** Second tutorial: Aggregating Data
+
+**May 24:** Third tutorial: Visualizing Data
