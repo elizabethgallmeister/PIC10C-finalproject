@@ -42,4 +42,10 @@ As I went through the tutorials, I logged my main takeaways in the notebook itse
 
 **May 23:** Second tutorial: Aggregating Data
 
+Investigating the `lambda` funtion ([Source](https://www.w3schools.com/python/python_lambda.asp))
+* `lambda` functions are anonymous functions that take any number of parameters and contain one expression
+* in following the tutorial, I wrote the line `criterion = cereal['name'].map(lambda x: x.startswith('A'))`
+* the above line of code goes through each entry in the 'name' column, represented as x, and calls `x.startswith('A')`
+* this function was actually a lot more simple than I thought, and I think it'll be something I'll learn to implement often
+
 **May 24:** Third tutorial: Visualizing Data
