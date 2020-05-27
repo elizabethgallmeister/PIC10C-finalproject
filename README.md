@@ -49,3 +49,18 @@ Investigating the `lambda` funtion ([Source](https://www.w3schools.com/python/py
 * this function was actually a lot more simple than I thought, and I think it'll be something I'll learn to implement often
 
 **May 24:** Third tutorial: Visualizing Data
+
+**May 25:** Investigating Seaborn ([Source](https://seaborn.pydata.org/))
+* Seaborn: a Python data visualization library to draw statistical graphics, based on matplotlib
+* When statistical values are estimated, it uses bootstrapping to compute confidence intervals and draw error bars representing the uncertainty of the estimate.
+* `catplot()` is used for visualizing the relationship between a numerical value and 1+ categorical variable, and `relplot()` is for visualizing the relationship between numerical values
+* Axes-level functions takes `ax=` argument and return the matplotlib `axes`
+* Figure-level functions don't take the `ax=` arg and return the `FacetGrid`
+* To visualize multiple plots, can use `joinplot()`, which focuses on a single relationship, or `pairplot()`, which shows all pairwise relationships and the marginal distributions
+
+**May 26:** Brainstorming for the "Official" bit of my final project
+* I think it would be interesting to analyze Coronavirus data, or if it's not excessively available, another disease/virus. Things I can do with virus data:
+* Make different graphs to visualize the data
+* Map data coordinates to a graphic
+* Use time series to make a forecast, of infection/death/recovery
+* I could start with a different virus data to see the accuracy of the time series predictions, and see if I could improve it somehow
