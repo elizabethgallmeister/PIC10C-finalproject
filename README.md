@@ -64,3 +64,11 @@ Investigating the `lambda` funtion ([Source](https://www.w3schools.com/python/py
 * Map data coordinates to a graphic
 * Use time series to make a forecast, of infection/death/recovery
 * I could start with a different virus data to see the accuracy of the time series predictions, and see if I could improve it somehow
+
+**May 27:** I spent a fair bit of time today looking for a good dataset for COVID-19 data.
+
+The best one that I found is [here](https://github.com/owid/covid-19-data/tree/master/public/data/), and I think it'll serve its purpose well because it has an abundance of information. Of the 32 columns, some that I thought would be very helpful were `location`, `population`, and `population_density` for making a map overlay, `total_cases`, `new_cases`, `total_deaths`, `new_deaths`, and variables of that sort which could be good for projections of when the peak is/was, or how the future may look. And then there were also interesting characteristics that I could examine later to see if I could project more specific outcomes for different people in different situations, such as `median_age`, `extreme_poverty`, `male_smokers`, `female_smokers`, etc.
+
+One *problem* that I forsee is because of the fact that this data is being updated daily. I plan to use the dataset downloaded today, May 27, to start all of the skeletal code for mapping, forecasting, and analyzing, but I think it will be a challenge to go back to the updated dataset, especially if new columns have been implemented, or some huge change has been made.
+
+I also found a dataset from Johns Hopkins that could be helpful [here](https://www.kaggle.com/imdevskp/corona-virus-report), but it definitely isn't as informative as the above example.
