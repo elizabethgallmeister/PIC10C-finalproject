@@ -72,3 +72,5 @@ The best one that I found is [here](https://github.com/owid/covid-19-data/tree/m
 One *problem* that I forsee is because of the fact that this data is being updated daily. I plan to use the dataset downloaded today, May 27, to start all of the skeletal code for mapping, forecasting, and analyzing, but I think it will be a challenge to go back to the updated dataset, especially if new columns have been implemented, or some huge change has been made.
 
 I also found a dataset from Johns Hopkins that could be helpful [here](https://www.kaggle.com/imdevskp/corona-virus-report), but it definitely isn't as informative as the above example.
+
+**May 31:** Started working with the actual coronavirus dataset.
