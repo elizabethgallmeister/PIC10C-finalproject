@@ -73,4 +73,13 @@ One *problem* that I forsee is because of the fact that this data is being updat
 
 I also found a dataset from Johns Hopkins that could be helpful [here](https://www.kaggle.com/imdevskp/corona-virus-report), but it definitely isn't as informative as the above example.
 
-**May 31:** Started working with the actual coronavirus dataset.
+**May 31:** Started working with the actual coronavirus dataset. Ran into two main issues:
+
+* Making graphs was a really huge struggle because of the huge size of the dataset, and I wasn't sure exactly what I wanted to convey. I kind of shelved that issue for another day and focused just on the United States COVID-19 data.
+* I really wanted to put the United States total_cases and total_deaths on the same graph, as the x and y axes were measuring the same variables and I wanted to see whether the death rate was decreasing or increasing, then see if I could attribute that to **(1)** more testing leading to a lower, or possibly higher, relative death rate, **(2)** an increase in death rate as hospitals ran out of supplies / respirators / etc, or **(3)** a decrease in death rate as hospitals began to receive resources (although I'm not fully sure this ever actually happened :/ ...)
+
+**June 3:** After thinking over it, I think I've come up with my next step and some goals, given the size of my dataset. 
+1. I want to get the overlaid graphs of total_cases and total_deaths working
+2. I'd like to create graphs like the ones made earlier of the United States cases for other countries whose rise and fall already occurred, like maybe Italy and China (places that were middle of the road in peak like Italy, and places where it was a huge issue much earlier, like China). I'd like to stack them vertically to see the differences in where the peaks were vs. when the first case occurred.
+3. I want to create a time series forecasting/prediction of the United States data, up to the date I got the dataset (May 27), then compare it to how the dataset looks near the end of finals week, 2 weeks later.
+4. I'd also like to create time series predictions for Italy and China, but only using the first, say, 2/3 of their data and then compare that to the actual progression of the virus.
