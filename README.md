@@ -83,3 +83,29 @@ I also found a dataset from Johns Hopkins that could be helpful [here](https://w
 2. I'd like to create graphs like the ones made earlier of the United States cases for other countries whose rise and fall already occurred, like maybe Italy and China (places that were middle of the road in peak like Italy, and places where it was a huge issue much earlier, like China). I'd like to stack them vertically to see the differences in where the peaks were vs. when the first case occurred.
 3. I want to create a time series forecasting/prediction of the United States data, up to the date I got the dataset (May 27), then compare it to how the dataset looks near the end of finals week, 2 weeks later.
 4. I'd also like to create time series predictions for Italy and China, but only using the first, say, 2/3 of their data and then compare that to the actual progression of the virus.
+
+In terms of what I worked on today, I tried a few different things to make an overlaid bar graph or other overlaid graphs that would show total_cases and total_deaths in the US. And again, failed. But, I found a resource that I thought would be useful to come back to next time.
+
+**June 5:**
+
+* I had an issue where the cell `temp.drop(['relative_deaths'], axis = 1)` kept giving me an error and I couldn't understand why, but I realized that it's because I never created the `relative_deaths` column when I recompiled all of the cells upon logging on today, so it was trying to drop a column that didn't exist. That's definitely one of the parts of Jupyter Notebook that I'm still getting used to.
+
+* The next issue was the next cell, which graphed relative deaths two days ago. Now it's giving me the error: `ValueError: Could not interpret input 'relative_death'` which I'm currently trying to figure out how to fix. relative_death is the column name of temp, so I'm not sure what's going wrong.
+* UPDATE: I tried printing temp because obviously for whatever reason, the column that I had created wasn't being registered. And lo and behold, the relative_deaths column was gone. I read up on `assign`, which I used to create the column, and saw that "Existing columns that are re-assigned will be overwritten" [Source](https://www.geeksforgeeks.org/python-pandas-dataframe-assign/#:~:text=Dataframe.,of%20rows%20in%20the%20dataframe.). So, what I think is happening is because I call `assign`, which creates a new dataframe, but I'm not really saving it anywhere, it's just getting lost.
+* What I did: I assigned the copied dataset to a variable called temp2: `temp2 = temp.assign(relative_death=temp['total_deaths']/temp['total_cases'])`
+
+* I then referenced the [link](https://stackoverflow.com/questions/52952857/how-to-plot-stacked-bar-chart-using-one-of-the-variables-in-pandas) I left in my Notebook to try and overlay the bar graph the way I want using a pivot table.
+* Original code: 
+        
+        s = (df.pivot_table(index='City_Category', columns='Gender', values='Purchase', aggfunc='sum'))
+        s.plot(kind='bar', stacked=True)
+        plt.show()
+        
+* For mine, index should be 'date', columns should be deaths and cases in the same way that gender has male and female, values should be total_deaths and total_cases. Now to reconfigure my dataframe to reflect this...
+* Okay never mind, because I just realized that this graph would add the number of deaths to the number of cases, which isn't what we wanted either (the assumption being that deaths started as confirmed cases).
+* In addition, I don't think there's a way to make my dataset resemble the form that would be needed to do this. This is because in the case of the example, male and female were independent of their purchasing, whereas there's no way to say 'total_deaths' and 'total_cases' on a specific day would be in the deaths category, and a different day would be in the 'cases' category.
+* I tried one last Google search and came across [this thread](https://stackoverflow.com/questions/23293011/how-to-plot-a-superimposed-bar-chart-using-matplotlib-in-python), which helped me finally create a stacked bar graph. It was highly underwhelming, though, because the death rate is so tiny compared to the rate of cases. 
+
+* Next up: Creating graphs of other countries (Italy and China to start), then stacking them vertically to see the differences in their timelines.
+* This is where I realized that not only does the dataframe start after China's first case, but also total_cases never decreases. You can see this in the graph for China's total cases-- it flattens out near the end of March. Meaning, even if people die or recover, that doesn't decrease total_cases. This means at first glance that I can't measure where the peak was, especially because there's no variable for recovery.
+* Or is there? If I graph based on new cases? Not sure - I'll think on it and come back to it.
