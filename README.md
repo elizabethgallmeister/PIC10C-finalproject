@@ -8,7 +8,7 @@ Here's a general log of what I did:
 **May 17:** To download Jupyter Notebook, I first had to download Miniconda. I ran into some issues with local repositories
 and creating my folder, but eventually got both downloaded and working.
 
-**May 18:** Initial Commit & Hello, World in Jupyter Notebook (for all tutorial following, see final project-tutorial.ipynb)
+**May 18:** Initial Commit & Hello, World in Jupyter Notebook **(for all tutorial following, see final project-tutorial.ipynb)**
 
 **May 19:** Reviewed some Markdown and started this README; I also planned how I would be breaking up the tutorials I was going to follow.
 They can be found here:
@@ -73,7 +73,7 @@ One *problem* that I forsee is because of the fact that this data is being updat
 
 I also found a dataset from Johns Hopkins that could be helpful [here](https://www.kaggle.com/imdevskp/corona-virus-report), but it definitely isn't as informative as the above example.
 
-**May 31:** Started working with the actual coronavirus dataset. (see final project-actual.ipynb) Ran into two main issues:
+**May 31:** Started working with the actual coronavirus dataset. **(see final project-actual.ipynb)** Ran into two main issues:
 
 * Making graphs was a really huge struggle because of the huge size of the dataset, and I wasn't sure exactly what I wanted to convey. I kind of shelved that issue for another day and focused just on the United States COVID-19 data.
 * I really wanted to put the United States total_cases and total_deaths on the same graph, as the x and y axes were measuring the same variables and I wanted to see whether the death rate was decreasing or increasing, then see if I could attribute that to **(1)** more testing leading to a lower, or possibly higher, relative death rate, **(2)** an increase in death rate as hospitals ran out of supplies / respirators / etc, or **(3)** a decrease in death rate as hospitals began to receive resources (although I'm not fully sure this ever actually happened :/ ...)
