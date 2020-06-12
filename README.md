@@ -157,3 +157,5 @@ Things I got to review from this class: `try-catch` blocks, git, lambda function
 Things I learned: largely, how to Google concise things to get help that's actually useful, but also a TON about data visualization, python, graphing, and everything you see in the above README.
 
 Things I would like to expand on in the future: I think it would be cool to do a temperature plot based on location and maybe total_cases to see regionally where the virus hit the hardest, and also playing around with some of the columns that were more unique and less populated, like `extreme_poverty`, `handwashing_facilities`, etc. I would also like to play around more with forecasting and finding optimal combinations with different data, and maybe seeing if the forecast is more accurate in 6 months, a year, and on and on.
+
+I wish I was able to make a summary in the notebook with the most important graphs and little explanations, but I think since the point of this project was to learn, it was better to learn as much in the time given, rather than sacrifice some of that to formatting a final product.
