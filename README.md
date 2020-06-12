@@ -115,8 +115,8 @@ In terms of what I worked on today, I tried a few different things to make an ov
 * *Making new graphs for changes in cases and deaths, rather than totals:* Upon review of the columns of the original dataset, there's a column for new_deaths and new_cases, which is GREAT! So now I need to add those to my China and Italy dataframes and then remake the graphs. While adding those to my dataframes, I realized I copy-pasted code to add each, which was kind of inefficient. So, I wrote a little function `addCol` to add the column automatically, based on the location, column, and dataframe given. I thought about making a template function, but I don't think that's necessary because the type of the inputs will always be the same; a dataframe and a string name.
 * *Making ONE dataset with accessible info from China, Italy, and the United States ONLY:* I needed this dataset to make a graph of all three countries on the same plot. This was super difficult for me because I couldn't figure out how to restrict rows of a dataset for multiple conditions (as in, keep this row if df\['location'] == 'Italy' or 'China' or 'United States'). Yeah, Python REALLY didn't like that. I kept running into this error: `Truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all()` which didn't make sense to me, because I thought what I had written was pretty clear: if it isn't the US, China, or Italy, don't add it. 
         
-        covid2\["wanted"] = covid2\[(covid2['location'] != 'United States') 
-                          and (covid2\['location'] != 'Italy') 
+        covid2["wanted"] = covid2[(covid2['location'] != 'United States') 
+                          and (covid2['location'] != 'Italy') 
                           and (covid2['location'] != 'China')]
                           
 * Evidently, it wasn't perceived as such, and the stackoverflow forum [here](https://stackoverflow.com/questions/36921951/truth-value-of-a-series-is-ambiguous-use-a-empty-a-bool-a-item-a-any-o) *kind of* helped figure out what was going wrong. Part of it was that I was using `and`, which apparently causes ambiguity that can be solved by using `&` instead. Replacing the `and`s in the above chunch didn't work, but what ended up working was writing a little auxiliary function, which I used `apply` to implement it. 
@@ -128,7 +128,7 @@ In terms of what I worked on today, I tried a few different things to make an ov
                 else: // technically unnecessary
                         return 0
         //calling the function:
-        covid2\['wanted'] = covid2\['location'].apply(isWanted)
+        covid2['wanted'] = covid2['location'].apply(isWanted)
         
 * This combo is what finally worked to give me a new column of my dataframe, which had a 1 if the location was the US, China, or Italy, and a 0 otherwise. Then, I called `covid2 = covid2[covid2.wanted > 0]` to get rid of any rows marked with a 0 (and it took me a while to figure out this line, because I kept deleting the 1s instead, and I didn't realize because the dataset was so big, all I saw were the first four rows of Aruba. So finally I had a dataframe, covid2, which I could use to plot the three functions! I didn't really have time to fix the ugly X axes, so I didn't. But it was a big exciting moment!
 
@@ -136,5 +136,26 @@ In terms of what I worked on today, I tried a few different things to make an ov
 
 * *Time Series:* Next, I started on the time series for the United States, using the tutorial [here](https://towardsdatascience.com/an-end-to-end-project-on-time-series-analysis-and-forecasting-with-python-4835e6bf050b). I learned that a lot of what goes into time series is preprocessing, which has kind of been a lesson throughout this entire project that applies to all data visualizations. 
 
+* I mainly just followed the tutorial linked above, and what exactly I was doing is outlined in Markdown and pseudocode throughout the notebook
+* Important things for time series: 
+1. resetting the index when the data came from a larger dataframe
+2. converting the dates to datetime, which also requires importing datetime
+3. set the index of the df to be the dates (in datetime)
+4. resampling the data (I did it by the day because this was a small dataset that only spanned 5 months, but in larger sets, it could be weekly, monthly, etc
+
 **June 11:** Finishing the time series, even if it kills me.
-* *Issue 1, indentations with try-catch:* I couldn't get one cell to run and could NOT figure out why, until I reviewed your repository 
+* *Issue 1 was indentations with `try-catch`:* I couldn't get one cell to run and could NOT figure out why, until I reviewed your repository on memory management, where you went over `try-catch` blocks. It was a really simple mistake, and it turned out all of my indentations were off; the try wasn't lined up with the catch, and the commands were unindented in a way that made their meaning ambiguous. It was also a nice way to review `try-catch` blocks and understand what it was the code was doing. I also referenced [this](https://stackoverflow.com/questions/54176536/indentationerror-unexpected-unindent-in-time-series) stackoverflow forum because the indentations were throwing me off.
+* I really liked learning about how to view the parameter combinations to get the optimal combination using a Seasonal ARIMA, and if I had had more time, I would've wanted to see if there were other types of ARIMA that could work better for a virus. Although I suppose viruses are somewhat seasonal..
+* I learned how to graph forecasts that showed confidence intervals, and realized that you should test your optimization before just forecasting the future. To do this, I learned how to start the projection before the end of the dataframe dates, in order to see if the prediction lined up, approximately, with the existing data
+* This is when I realized my fourth deliverable was null, because if you're doing a time series, you're going to test it on a portion of the data before you implement it on the rest, so I thought it would be okay to leave that one out (also I ran out of time)
+* It was cool how in the final projection into June, you could see how the confidence interval got wider and wider as the future became more uncertain. The last thing I really need to do is redownload the updated dataframe that has the first two weeks of June and end of May, and see if the projection was accurate.
+
+**RECAP:** I still need to go in and make the notebook a little more readable, maybe put some of my pseudocode in Markdown instead, but I learned a TON from this project and really enjoyed doing it. 
+
+Things I got to review from this class: `try-catch` blocks, git, lambda functions (which we covered in a discussion but didn't quite get to in lecture), template functions
+
+Things I learned: largely, how to Google concise things to get help that's actually useful, but also a TON about data visualization, python, graphing, and everything you see in the above README.
+
+Things I would like to expand on in the future: I think it would be cool to do a temperature plot based on location and maybe total_cases to see regionally where the virus hit the hardest, and also playing around with some of the columns that were more unique and less populated, like `extreme_poverty`, `handwashing_facilities`, etc. I would also like to play around more with forecasting and finding optimal combinations with different data, and maybe seeing if the forecast is more accurate in 6 months, a year, and on and on.
+
+I wish I was able to make a summary in the notebook with the most important graphs and little explanations, but I think since the point of this project was to learn, it was better to learn as much in the time given, rather than sacrifice some of that to formatting a final product.
