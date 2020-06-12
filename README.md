@@ -110,6 +110,31 @@ In terms of what I worked on today, I tried a few different things to make an ov
 * This is where I realized that not only does the dataframe start after China's first case, but also total_cases never decreases. You can see this in the graph for China's total cases-- it flattens out near the end of March. Meaning, even if people die or recover, that doesn't decrease total_cases. This means at first glance that I can't measure where the peak was, especially because there's no variable for recovery.
 * Or is there? If I graph based on new cases? Not sure - I'll think on it and come back to it.
 
-**June 9** I was really busy the past few days studying for and taking finals, but I'm ready to work more on those four deliverables and get them working. I want to start by fixing my China and Italy graphs to depict change in number of cases, rather than total_cases.
+**June 9:** I was really busy the past few days studying for and taking finals, but I'm ready to work more on those four deliverables and get them working. I want to start by fixing my China and Italy graphs to depict change in number of cases, rather than total_cases.
 
 * *Making new graphs for changes in cases and deaths, rather than totals:* Upon review of the columns of the original dataset, there's a column for new_deaths and new_cases, which is GREAT! So now I need to add those to my China and Italy dataframes and then remake the graphs. While adding those to my dataframes, I realized I copy-pasted code to add each, which was kind of inefficient. So, I wrote a little function `addCol` to add the column automatically, based on the location, column, and dataframe given. I thought about making a template function, but I don't think that's necessary because the type of the inputs will always be the same; a dataframe and a string name.
+* *Making ONE dataset with accessible info from China, Italy, and the United States ONLY:* I needed this dataset to make a graph of all three countries on the same plot. This was super difficult for me because I couldn't figure out how to restrict rows of a dataset for multiple conditions (as in, keep this row if df\['location'] == 'Italy' or 'China' or 'United States'). Yeah, Python REALLY didn't like that. I kept running into this error: `Truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all()` which didn't make sense to me, because I thought what I had written was pretty clear: if it isn't the US, China, or Italy, don't add it. 
+        
+        covid2\["wanted"] = covid2\[(covid2['location'] != 'United States') 
+                          and (covid2\['location'] != 'Italy') 
+                          and (covid2['location'] != 'China')]
+                          
+* Evidently, it wasn't perceived as such, and the stackoverflow forum [here](https://stackoverflow.com/questions/36921951/truth-value-of-a-series-is-ambiguous-use-a-empty-a-bool-a-item-a-any-o) *kind of* helped figure out what was going wrong. Part of it was that I was using `and`, which apparently causes ambiguity that can be solved by using `&` instead. Replacing the `and`s in the above chunch didn't work, but what ended up working was writing a little auxiliary function, which I used `apply` to implement it. 
+
+        //function itself:
+        def isWanted(placename):
+                if (placename == "United States") | (placename == "China") | (placename == "Italy"):
+                        return 1
+                else: // technically unnecessary
+                        return 0
+        //calling the function:
+        covid2\['wanted'] = covid2\['location'].apply(isWanted)
+        
+* This combo is what finally worked to give me a new column of my dataframe, which had a 1 if the location was the US, China, or Italy, and a 0 otherwise. Then, I called `covid2 = covid2[covid2.wanted > 0]` to get rid of any rows marked with a 0 (and it took me a while to figure out this line, because I kept deleting the 1s instead, and I didn't realize because the dataset was so big, all I saw were the first four rows of Aruba. So finally I had a dataframe, covid2, which I could use to plot the three functions! I didn't really have time to fix the ugly X axes, so I didn't. But it was a big exciting moment!
+
+**June 10:** Starting on the time series.
+
+* *Time Series:* Next, I started on the time series for the United States, using the tutorial [here](https://towardsdatascience.com/an-end-to-end-project-on-time-series-analysis-and-forecasting-with-python-4835e6bf050b). I learned that a lot of what goes into time series is preprocessing, which has kind of been a lesson throughout this entire project that applies to all data visualizations. 
+
+**June 11:** Finishing the time series, even if it kills me.
+* *Issue 1, indentations with try-catch:* I couldn't get one cell to run and could NOT figure out why, until I reviewed your repository 
